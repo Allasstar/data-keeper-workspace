@@ -49,47 +49,42 @@ namespace DataKeeper.FSM
             stateMachine.AddTransition(
                 CharacterState.Idle,
                 CharacterState.Walking,
-                () => Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.1f && !Input.GetKey(KeyCode.LeftShift),
-                () => Debug.Log("Transitioning: Idle -> Walking")
-            );
+                () => Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.1f && !Input.GetKey(KeyCode.LeftShift))
+                .OnTransition(() => Debug.Log("Transitioning: Idle -> Walking"));
 
             // Walking -> Running
             stateMachine.AddTransition(
                 CharacterState.Walking,
                 CharacterState.Running,
-                () => Input.GetKey(KeyCode.LeftShift),
-                () => Debug.Log("Transitioning: Walking -> Running")
-            );
+                () => Input.GetKey(KeyCode.LeftShift))
+                .OnTransition(() => Debug.Log("Transitioning: Walking -> Running"));
 
             // Running -> Walking
             stateMachine.AddTransition(
                 CharacterState.Running,
                 CharacterState.Walking,
-                () => !Input.GetKey(KeyCode.LeftShift),
-                () => Debug.Log("Transitioning: Running -> Walking")
-            );
+                () => !Input.GetKey(KeyCode.LeftShift))
+                .OnTransition(() => Debug.Log("Transitioning: Running -> Walking"));
 
             // Moving -> Idle
             stateMachine.AddTransition(
                 CharacterState.Walking,
                 CharacterState.Idle,
-                () => Mathf.Abs(Input.GetAxisRaw("Horizontal")) < 0.1f,
-                () => Debug.Log("Transitioning: Walking -> Idle")
-            );
+                () => Mathf.Abs(Input.GetAxisRaw("Horizontal")) < 0.1f)
+                .OnTransition(() => Debug.Log("Transitioning: Walking -> Idle"));
 
             // Jump transition from any state
             stateMachine.AddAnyStateTransition(
                 CharacterState.Jumping,
-                () => Input.GetKeyDown(KeyCode.Space) && IsGrounded(),
-                () => Debug.Log("Transitioning to Jump")
-            );
+                () => Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+                .Cooldown(5)
+                .OnTransition(() => Debug.Log("Transitioning to Jump"));
 
             // Falling transition from any state
             stateMachine.AddAnyStateTransition(
                 CharacterState.Falling,
-                () => !IsGrounded() && rb.velocity.y < -0.1f && stateMachine.CurrentStateType != CharacterState.Jumping,
-                () => Debug.Log("Transitioning to Falling")
-            );
+                () => !IsGrounded() && rb.velocity.y < -0.1f && stateMachine.CurrentStateType != CharacterState.Jumping)
+                .OnTransition(() => Debug.Log("Transitioning to Falling"));
 
             stateMachine.SetInitialState(CharacterState.Idle);
             StateReactive.Value = stateMachine.CurrentStateType;
