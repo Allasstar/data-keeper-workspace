@@ -1,7 +1,9 @@
-using System.Linq;
+using System;
+using System.Collections.Generic;
 using DataKeeper.Attributes;
 using DataKeeper.Between;
 using DataKeeper.Extensions;
+using DataKeeper.Generic;
 using DataKeeper.PoolSystem;
 using UnityEngine;
 
@@ -9,6 +11,15 @@ public class PoolTest : MonoBehaviour
 {
     public Pool<Collider> colliderPool = new Pool<Collider>();
 
+    [field: SerializeReference, SerializeReferenceSelector] public ValueBase ValueBaseProp { get; private set; }
+    [field: SerializeReference, SerializeReferenceSelector] public List<ValueBase> ValueBasePropList { get; private set; } = new List<ValueBase>();
+
+    public Optional<int> TestOpt = new Optional<int>();
+    
+    [SerializeReference, SerializeReferenceSelector] public ValueBase valueBase;
+    [SerializeReference, SerializeReferenceSelector] private ValueBase valueBase2;
+    [SerializeReference, SerializeReferenceSelector] public List<ValueBase> valueBaseList = new List<ValueBase>();
+    
     private void Awake()
     {
         colliderPool.Initialize();
@@ -80,4 +91,73 @@ public class PoolTest : MonoBehaviour
                 .Start();
         }
     }
+
+    [Button]
+    public void Str()
+    {
+        valueBase = new ValueString();
+    }
+    
+    [Button]
+    public void Boo()
+    {
+        valueBase = new ValueBool();
+    }
+    
+    [Button]
+    public void Vec()
+    {
+        valueBase = new ValueVec();
+    }
 }
+
+[Serializable]
+public abstract class ValueBase
+{
+    public int valueInt;
+    [SerializeField] private float valueFloat;
+}
+
+[Serializable]
+public class ValueString : ValueBase
+{
+    public string valueString;
+}
+
+[Serializable]
+public class ValueBool : ValueBase
+{
+    [SerializeField] private bool valueBool;
+}
+
+[Serializable]
+public class ValueVec : ValueBase
+{
+    [field: SerializeField] public Vector3 valueVec { get; private set; }
+}
+
+[Serializable]
+public class ValueSecondOrder : ValueVec
+{
+    [field: SerializeField, Range(0f, 1f)] public float valueRange { get; private set; }
+}
+
+[Serializable] public class ValueSecondOrder2 : ValueSecondOrder { }
+[Serializable] public class ValueSecondOrder3 : ValueSecondOrder { }
+[Serializable] public class ValueSecondOrder4 : ValueSecondOrder { }
+[Serializable] public class ValueSecondOrder5 : ValueSecondOrder { }
+[Serializable] public class ValueSecondOrder6 : ValueSecondOrder { }
+[Serializable] public class ValueSecondOrder7 : ValueSecondOrder { }
+[Serializable] public class ValueSecondOrder8 : ValueSecondOrder { }
+[Serializable] public class ValueSecondOrder9 : ValueSecondOrder { }
+[Serializable] public class ValueSecondOrder10 : ValueSecondOrder { }
+[Serializable] public class ValueSecondOrder11 : ValueSecondOrder { }
+[Serializable] public class ValueSecondOrder12 : ValueSecondOrder { }
+[Serializable] public class ValueSecondOrder13 : ValueSecondOrder { }
+[Serializable] public class ValueSecondOrder14 : ValueSecondOrder { }
+[Serializable] public class ValueSecondOrder15 : ValueSecondOrder { }
+[Serializable] public class ValueSecondOrder16 : ValueSecondOrder { }
+[Serializable] public class ValueSecondOrder17 : ValueSecondOrder { }
+[Serializable] public class ValueSecondOrder18 : ValueSecondOrder { }
+[Serializable] public class ValueSecondOrder19 : ValueSecondOrder { }
+[Serializable] public class ValueSecondOrder20 : ValueSecondOrder { }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -161,6 +161,64 @@ MonoBehaviour:
     _maxActive:
       enabled: 0
       value: 5
+  <ValueBaseProp>k__BackingField:
+    rid: -2
+  <ValueBasePropList>k__BackingField:
+  - rid: 1636186706131812413
+  - rid: -2
+  - rid: 1636186706131812414
+  TestOpt:
+    enabled: 0
+    value: 0
+  valueBase:
+    rid: 1636186706131812391
+  valueBase2:
+    rid: 1636186706131812373
+  valueBaseList:
+  - rid: -2
+  - rid: 1636186706131812411
+  - rid: 1636186706131812407
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 1636186706131812373
+      type: {class: ValueBool, ns: , asm: Assembly-CSharp}
+      data:
+        valueInt: 0
+        valueFloat: 0
+        valueBool: 0
+    - rid: 1636186706131812391
+      type: {class: ValueString, ns: , asm: Assembly-CSharp}
+      data:
+        valueInt: 0
+        valueFloat: 0
+        valueString: 
+    - rid: 1636186706131812407
+      type: {class: ValueBool, ns: , asm: Assembly-CSharp}
+      data:
+        valueInt: 0
+        valueFloat: 0
+        valueBool: 0
+    - rid: 1636186706131812411
+      type: {class: ValueString, ns: , asm: Assembly-CSharp}
+      data:
+        valueInt: 0
+        valueFloat: 0
+        valueString: 
+    - rid: 1636186706131812413
+      type: {class: ValueString, ns: , asm: Assembly-CSharp}
+      data:
+        valueInt: 0
+        valueFloat: 0
+        valueString: 
+    - rid: 1636186706131812414
+      type: {class: ValueVec, ns: , asm: Assembly-CSharp}
+      data:
+        valueInt: 0
+        valueFloat: 0
+        <valueVec>k__BackingField: {x: 0, y: 0, z: 0}
 --- !u!4 &103842096
 Transform:
   m_ObjectHideFlags: 0
@@ -498,6 +556,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d74171a531a7493f8d6cb66a9a140bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateReactive:
+    value: 0
   rb: {fileID: 1096182595}
   walkSpeed: 5
   runSpeed: 10
