@@ -20,6 +20,9 @@ public class PoolTest : MonoBehaviour
     [SerializeReference, SerializeReferenceSelector] private ValueBase valueBase2;
     [SerializeReference, SerializeReferenceSelector] public List<ValueBase> valueBaseList = new List<ValueBase>();
     
+    [SearchableEnum] public TestEnum SearchableEnumTestEnum;
+    public TestEnum NotTestEnum;
+    
     private void Awake()
     {
         colliderPool.Initialize();
@@ -140,6 +143,18 @@ public class ValueVec : ValueBase
 public class ValueSecondOrder : ValueVec
 {
     [field: SerializeField, Range(0f, 1f)] public float valueRange { get; private set; }
+}
+
+public enum TestEnum
+{
+    Test1 = 0,
+    Test2 = 1,
+    Test3 = 2,
+    Test4 = 3,
+    Test5 = 4,
+    Test6 = 5,
+    Test7 = 6,
+    Test8 = 7,
 }
 
 [Serializable] public class ValueSecondOrder2 : ValueSecondOrder { }
