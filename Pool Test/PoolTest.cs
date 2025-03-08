@@ -30,6 +30,11 @@ public class PoolTest : MonoBehaviour
     
     [SerializeReference, SerializeReferenceSelector, Space] public ValueBase2 ValueBase2Enum;
 
+    
+    [Space] public ReactivePref<string> TestRP1 = new ReactivePref<string>("TestRP1", "key_1");
+    public ReactivePref<int> TestRP2 = new ReactivePref<int>(42, "key_2");
+    public ReactivePref<Vector3> TestRP3 = new ReactivePref<Vector3>(Vector3.one, "key_3");
+    
     private void Awake()
     {
         colliderPool.Initialize();
