@@ -15,14 +15,20 @@ public class PoolTest : MonoBehaviour
     [field: SerializeReference, SerializeReferenceSelector] public List<ValueBase> ValueBasePropList { get; private set; } = new List<ValueBase>();
 
     public Optional<int> TestOpt = new Optional<int>();
+    public Optional<ValueSecondOrder> TestOpt2 = new Optional<ValueSecondOrder>();
     
     [SerializeReference, SerializeReferenceSelector] public ValueBase valueBase;
     [SerializeReference, SerializeReferenceSelector] private ValueBase valueBase2;
     [SerializeReference, SerializeReferenceSelector] public List<ValueBase> valueBaseList = new List<ValueBase>();
     
-    [SearchableEnum] public TestEnum SearchableEnumTestEnum;
+    [SearchableEnum, Space] public TestEnum SearchableEnumTestEnum;
     public TestEnum NotTestEnum;
     
+    [SearchableEnum, Space] public KeyCode SearchableKeyCodeEnum;
+    public KeyCode NotKeyCodeEnum;
+    
+    [SerializeReference, SerializeReferenceSelector, Space] public ValueBase2 ValueBase2Enum;
+
     private void Awake()
     {
         colliderPool.Initialize();
@@ -176,3 +182,14 @@ public enum TestEnum
 [Serializable] public class ValueSecondOrder18 : ValueSecondOrder { }
 [Serializable] public class ValueSecondOrder19 : ValueSecondOrder { }
 [Serializable] public class ValueSecondOrder20 : ValueSecondOrder { }
+
+
+
+[Serializable]
+public class ValueBase2 
+{
+    [field: SerializeField] public Vector3 valueVec { get; private set; }
+}
+[Serializable] public class Value1 : ValueBase2 { }
+[Serializable] public class Value2 : ValueBase2 { }
+[Serializable] public class Value3 : ValueBase2 { }
