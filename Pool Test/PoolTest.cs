@@ -15,6 +15,7 @@ public class PoolTest : MonoBehaviour
     [field: SerializeReference, SerializeReferenceSelector] public List<ValueBase> ValueBasePropList { get; private set; } = new List<ValueBase>();
 
     public Optional<int> TestOpt = new Optional<int>();
+    public Optional<GameObject> TestGameObjectOpt = new Optional<GameObject>();
     public Optional<ValueSecondOrder> TestOpt2 = new Optional<ValueSecondOrder>();
     
     [SerializeReference, SerializeReferenceSelector] public ValueBase valueBase;
