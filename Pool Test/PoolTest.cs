@@ -1,11 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Numerics;
 using DataKeeper.Attributes;
 using DataKeeper.Between;
 using DataKeeper.Extensions;
 using DataKeeper.Generic;
 using DataKeeper.PoolSystem;
 using UnityEngine;
+using Color = UnityEngine.Color;
+using Random = UnityEngine.Random;
+using Vector3 = UnityEngine.Vector3;
 
 public class PoolTest : MonoBehaviour
 {
@@ -38,6 +43,7 @@ public class PoolTest : MonoBehaviour
     private void Awake()
     {
         colliderPool.Initialize();
+        
     }
     
     [Button]
@@ -57,7 +63,7 @@ public class PoolTest : MonoBehaviour
     public void TweenEaseInOutCircTest()
     {
         var target = colliderPool.Get();
-
+        
         Tween
             .Move(target.transform)
             .From((Vector3.right * -5f) + target.transform.position)
@@ -123,6 +129,15 @@ public class PoolTest : MonoBehaviour
     public void Vec()
     {
         valueBase = new ValueVec();
+    }
+    
+    [Button]
+    public void TestGameSettings()
+    {
+        GameSettings.MasterVolume = Random.value;
+        GameSettings.ReactiveInt.Value = Random.Range(0, 100);
+        GameSettings.ReactivePrefBool.Value = Random.value > 0.5f;
+        GameSettings.ThemeColor = new Color(Random.value, Random.value, Random.value);
     }
 }
 
