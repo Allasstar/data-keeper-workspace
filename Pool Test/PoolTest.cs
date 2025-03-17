@@ -7,6 +7,7 @@ using DataKeeper.Between;
 using DataKeeper.Extensions;
 using DataKeeper.Generic;
 using DataKeeper.PoolSystem;
+using DataKeeper.ServiceLocatorPattern;
 using UnityEngine;
 using Color = UnityEngine.Color;
 using Random = UnityEngine.Random;
@@ -43,7 +44,8 @@ public class PoolTest : MonoBehaviour
     private void Awake()
     {
         colliderPool.Initialize();
-        
+        ServiceLocator.ForTableOf("table: " + gameObject.name).Reg<PoolTest>(this);
+        ServiceLocator.ForTableOf("table: " + gameObject.name).Reg<Pool<Collider>>(colliderPool);
     }
     
     [Button]
