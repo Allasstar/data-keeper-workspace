@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DataKeeper.Attributes;
 using DataKeeper.Generic;
 using UnityEngine;
@@ -30,5 +31,10 @@ public static class GameSettings
     
     public static Reactive<int> ReactiveInt = new Reactive<int>(2);
     public static ReactivePref<bool> ReactivePrefBool = new ReactivePref<bool>(true, "bool_key");
+    
+    public static int[] IntArray = new int[] { 1, 2, 3, 4, 5 };
+    public static List<float> FloatList = new List<float> {1, 2, 3, 4, 5};
+    
+    public static Dictionary<int, bool> BoolDictionary = new Dictionary<int, bool>() { { 1, true }, { 2, false }, { 3, false } };
 
 }
